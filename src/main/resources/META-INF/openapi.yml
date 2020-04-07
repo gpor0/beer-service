@@ -1,0 +1,41 @@
+openapi: 3.0.2
+info:
+  title: Beer interface
+  version: 1.0.0
+servers:
+  - url: /beer/api
+  - url: 'https://beer.test.sunesis.si/erp/api'
+  - url: 'https://beer.sunesis.si/beer/api'
+paths:
+  /beers/{company}:
+    get:
+      tags:
+        - beers
+      summary: Retrieve beers
+      description: Returns all beers
+      operationId: getBeers
+      parameters:
+        - name: company
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  title: Beer
+                  type: object
+                  properties:
+                    company:
+                      type: string
+                    name:
+                      type: string
+                    alcohol:
+                      type: string
+                    price:
+                      type: number
