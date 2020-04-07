@@ -1,10 +1,11 @@
-package com.github.gpor0.rest.api;
+package com.github.gpor0.beer.rest.api;
 
-import com.github.gpor0.beer.rest.api.BeersApi;
 import com.github.gpor0.beer.rest.api.model.Beer;
 
 import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,9 @@ public class BeersApiBean implements BeersApi {
         beer.setPrice(new BigDecimal("1.12"));
         BEERS.put(beer.getName(), beer);
     }
+
+    @Context
+    private UriInfo uri;
 
     @Override
     public Response getBeers(String company) {

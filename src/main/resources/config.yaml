@@ -1,0 +1,8 @@
+kumuluzee:
+  name: Beer service
+  env:
+    name: dev
+  server:
+    etags: true
+    http:
+      port: 8878
